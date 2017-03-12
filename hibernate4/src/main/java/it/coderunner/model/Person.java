@@ -1,10 +1,15 @@
 package it.coderunner.model;
 
+
+
+import java.util.Set;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import org.hibernate.annotations.ColumnTransformer;
@@ -21,6 +26,9 @@ public class Person {
 	private String name;
 
 	private String country;
+	
+	@OneToMany(mappedBy="person")
+	private Set<Invoices> invoices;
 
 	public int getId() {
 		return id;
@@ -44,6 +52,14 @@ public class Person {
 
 	public void setCountry(String country) {
 		this.country = country;
+	}
+
+	public Set<Invoices> getInvoices() {
+		return invoices;
+	}
+
+	public void setInvoices(Set<Invoices> invoices) {
+		this.invoices = invoices;
 	}
 
 	@Override

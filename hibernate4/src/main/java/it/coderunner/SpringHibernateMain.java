@@ -27,13 +27,13 @@ public class SpringHibernateMain {
 		System.out.println("Person::" + person);
 
 		personDAO.list().forEach(System.out::println);
-
 		
 		InvoicesDAO invoicesDao = context.getBean(InvoicesDAO.class);
 		
 		Invoices invoices = new Invoices();
 		invoices.setProduct("PcComputer");
 		invoices.setQuantity(2);
+		invoices.setPerson(person);
 		
 		invoicesDao.save(invoices);
 		
@@ -41,9 +41,14 @@ public class SpringHibernateMain {
 		
 		invoicesDao.list().forEach(System.out::println);
 		
+		System.out.println(personDAO.find(1));
+		
+		Person updatedPerson = personDAO.find(1);
+		updatedPerson.setCountry("England");
+		personDAO.update(updatedPerson);
+		
 		context.close();
 		
-
 	}
 
 }
