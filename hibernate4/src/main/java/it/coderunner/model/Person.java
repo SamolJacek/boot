@@ -7,6 +7,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import org.hibernate.annotations.ColumnTransformer;
+
 @Entity
 @Table(name = "PERSON")
 public class Person {
@@ -15,7 +17,7 @@ public class Person {
 	@Column(name = "id")
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
-
+	@Column(name="username")
 	private String name;
 
 	private String country;
