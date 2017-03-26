@@ -22,7 +22,7 @@ public class CityController {
 	private CityService cityService;
 
 	@GetMapping("/get/city/{name}/{country}")
-	public @ResponseBody ResponseEntity<String> getByNameAndCountry(@PathVariable String name,
+	public @ResponseBody ResponseEntity<String> getByNameAndCountry(@PathVariable String name, //zmienna musi miec ta sama nazwe w mappingu co w parametrze funkcji
 			@PathVariable String country) {
 		City city = cityService.findByNameAndCountryAllIgnoringCase(name, country);
 		return city != null ? new ResponseEntity<String>("GET Response : " + city, HttpStatus.OK)
